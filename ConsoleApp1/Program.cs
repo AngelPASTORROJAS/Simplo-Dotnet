@@ -259,18 +259,19 @@ for(int i = initNbTable; i <= nbTable; i++)
  * - la moins bonne note
  * - la moyenne des notes
  */
+/**
 string titre = "Gestion des notes";
-int nbInitNotes = 1;
-int nbNotes = 5;
+int nbDebutNotes = 1;
+int nbFinalNotes = 5;
 int nbEvaluation = 20;
 List<int> notes = [];
 
 Console.WriteLine($"--- {titre} ---\n");
-Console.WriteLine($"Veuillez saisir {nbNotes} notes :\n");
+Console.WriteLine($"Veuillez saisir {nbFinalNotes} notes :\n");
 
-for (int note = nbInitNotes; note <= nbNotes; note++)
+for (int i = nbDebutNotes; i <= nbFinalNotes; i++)
 {
-    Console.Write($"   - Merci de saisir la note {note} (sur /{nbEvaluation}) : ");
+    Console.Write($"   - Merci de saisir la note {i} (sur /{nbEvaluation}) : ");
     bool existNote = int.TryParse(Console.ReadLine(), out int nbNote);
     if (existNote && nbNote >= 0 && nbNote<=20)
     {
@@ -281,6 +282,7 @@ for (int note = nbInitNotes; note <= nbNotes; note++)
         Console.WriteLine("      Votre note n'est pas valide, on l'a prendra pas en considération.");
     }
 }
+
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine($"La meilleur note est {notes.Max()}/{nbEvaluation}");
 
@@ -289,5 +291,5 @@ Console.WriteLine($"La moins bonne note est {notes.Min()}/{nbEvaluation}");
 
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine($"La moyenne des notes est {notes.Average()}/{nbEvaluation}");
-
+*/
 #endregion
