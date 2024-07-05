@@ -293,3 +293,134 @@ Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine($"La moyenne des notes est {notes.Average()}/{nbEvaluation}");
 */
 #endregion
+
+#region "Exo6"
+/** Objectif : Comprendre les foncitonnalités des structures conditionnelles While avec des variables int et bool.
+ * 
+ * Créer un programme permettant de trouver un nombre généré aleatoirement entre 1 et 50.
+ * - Indiquez à l'utilisateur que le nombre mystère est soit plus grand ou plus petit que la saisie tant que la bonne réponse n'est pas trouvée.
+ * - Pour déclarer un nombre aléatoire : Random aleatoire = new Random();
+ * - Pour générer un nombre aléatoire après déclaration : int nbMystere = aleatoire.Next(1,51);
+ * - Comptez le nombre de coups et l'afficher une fois la partie terminée.
+ */
+/**
+int countHit = 0;
+int a = 1;
+int b = 50;
+Random aleatoire = new Random();
+int nbMystere = aleatoire.Next(a,b+1);
+bool isEnd = false;
+
+Console.WriteLine("--- Trouver le nombre mystère ---\n");
+while(!isEnd)
+{
+    Console.Write("\tVeuillez sasir un nombre : ");
+    bool existNbChoice = int.TryParse(Console.ReadLine(), out int nbChoice);
+    if(existNbChoice && nbChoice < nbMystere)
+    {
+        countHit++;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\t\tLe nombre mystère est plus grand");
+        Console.ForegroundColor= ConsoleColor.White;
+    }
+    else if (existNbChoice && nbChoice > nbMystere)
+    {
+        countHit++;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\t\tLe nombre mystère est plus petit");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    else if (existNbChoice && nbChoice == nbMystere)
+    {
+        countHit++;
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\nBravo !!! Vous avez trouvé le nombre mystère !\n");
+        Console.WriteLine($"Vous avez trouvé en {countHit} coups.\n");
+        Console.ForegroundColor = ConsoleColor.White;
+        isEnd = true;
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Votre saisi de nombre est invalide, on vous comptera pas ce coups !");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+*/
+#endregion
+
+#region "Exo8"
+/** Moins de 20 lignes
+ */
+/**
+int taille = 177;
+int poids = 55;
+Console.WriteLine("");
+if (poids >= 43 && poids <= 65 && taille >= 145 && taille <= 183)
+{
+    if ((taille<= 160) || 
+        (taille <= 163 && poids <= 59) || 
+        (taille <= 166 && poids <= 53) || 
+        (taille <= 169 && poids <= 47))
+    {
+        Console.WriteLine("Prennez la taille 1");
+    }
+    else if (
+        (taille <= 169) ||
+        (poids >= 48 &&
+            (taille <= 172 && poids <= 65) ||
+            (taille <= 175 && poids <= 59) ||
+            (taille <= 178 && poids <= 53)
+        )
+        ){
+        Console.WriteLine("Prennez la taille 2");
+    }
+    else if (poids >= 54)
+    {
+        Console.WriteLine("Prenez la taille 3");
+    }
+    else
+    {
+        Console.WriteLine("On n'as pas votre taille");
+    }
+}
+else if (poids >=66 && poids<=77 && taille >= 160 && taille<= 183)
+{
+    if (taille <= 169 && poids <=71)
+    {
+        Console.WriteLine("Prenez la taille 2");
+    }
+    else if (taille >= 163)
+    {
+        Console.WriteLine("Prenez la taille 3");
+    }
+    else
+    {
+        Console.WriteLine("On n'as pas votre taille");
+    }
+}
+else
+{
+        Console.WriteLine("On n'as pas votre taille");
+}
+*/
+/** debut de exo8 option 2
+int poids;
+int taille;
+if (poids >=43 && poids <= 77 && taille >=145 && taille<= 183)
+{
+    if(
+        (taille>= 172 && poids <= 47) ||
+        (taille > 178) ||
+        (poids >= 66 && taille<=157) || 
+        (poids >= 72 && taille <= 160)
+        )
+    {
+        Console.WriteLine("On a pas votre taille");
+    }
+}
+else
+{
+    Console.WriteLine("On a pas votre taille");
+}*/
+#endregion
