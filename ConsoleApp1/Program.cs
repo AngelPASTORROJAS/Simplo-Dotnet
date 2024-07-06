@@ -47,6 +47,7 @@ static void App()
  * et pouvoir saisir l'age dans le terminal
  * et de relancer le programme non infini mais qu'il nous donne une option de sortie de programme
  */
+/**
 static void DisplayMenu()
 {
     Console.WriteLine("\nChoisir une option:\n");
@@ -95,7 +96,7 @@ static void App3()
     }
 }
 
-//App3();
+//App3();*/
 #endregion
 
 #region "Exercice 4"
@@ -350,77 +351,156 @@ while(!isEnd)
 #endregion
 
 #region "Exo8"
-/** Moins de 20 lignes
- */
-/**
-int taille = 177;
-int poids = 55;
-Console.WriteLine("");
-if (poids >= 43 && poids <= 65 && taille >= 145 && taille <= 183)
-{
-    if ((taille<= 160) || 
-        (taille <= 163 && poids <= 59) || 
-        (taille <= 166 && poids <= 53) || 
-        (taille <= 169 && poids <= 47))
-    {
-        Console.WriteLine("Prennez la taille 1");
+/** //Moins de 20 lignes 
+Console.WriteLine("--- Quelle taille dois-je prendre ? ---\n");
+Console.Write("Entrez votre taille (en cm) : ");
+bool isValidTaille = int.TryParse(Console.ReadLine(),out int taille);
+Console.Write("Entrez votre poids (en kg) : ");
+bool isValidPoids= int.TryParse(Console.ReadLine(),out int poids);
+
+if (isValidTaille && isValidPoids && !(
+    (poids < 43 && poids > 77) && (taille < 145 && taille > 183) && 
+    (taille >= 172 && poids < 48) && (taille >= 183 && poids < 54) && 
+    (taille < 160  && poids > 65) && (taille < 163 && poids > 71)
+    )){
+    if (poids <66 && taille <172 && ((poids < 48) || (poids < 54 && taille < 169) || (poids < 60 && taille < 166) || (poids < 66 && taille < 163))){
+        Console.WriteLine("\nPrenez la taille 1.");
+    } else if ( poids < 72 && taille < 183 && ((poids < 54) || (poids < 60 && taille < 178)|| (poids < 66 && taille < 175) || (taille < 169))){
+        Console.WriteLine("\nPrenez la taille 2.");
+    } else {
+        Console.WriteLine("\nPrenez la taille 3.");
     }
-    else if (
-        (taille <= 169) ||
-        (poids >= 48 &&
-            (taille <= 172 && poids <= 65) ||
-            (taille <= 175 && poids <= 59) ||
-            (taille <= 178 && poids <= 53)
-        )
-        ){
-        Console.WriteLine("Prennez la taille 2");
-    }
-    else if (poids >= 54)
-    {
-        Console.WriteLine("Prenez la taille 3");
-    }
-    else
-    {
-        Console.WriteLine("On n'as pas votre taille");
-    }
-}
-else if (poids >=66 && poids<=77 && taille >= 160 && taille<= 183)
-{
-    if (taille <= 169 && poids <=71)
-    {
-        Console.WriteLine("Prenez la taille 2");
-    }
-    else if (taille >= 163)
-    {
-        Console.WriteLine("Prenez la taille 3");
-    }
-    else
-    {
-        Console.WriteLine("On n'as pas votre taille");
-    }
-}
-else
-{
-        Console.WriteLine("On n'as pas votre taille");
+} else {
+    Console.WriteLine("\nAucune taille ne vous correspond.");
 }
 */
-/** debut de exo8 option 2
-int poids;
-int taille;
-if (poids >=43 && poids <= 77 && taille >=145 && taille<= 183)
+#endregion
+
+#region "Exo9"
+
+static void inputNotes(List<int> notes)
 {
-    if(
-        (taille>= 172 && poids <= 47) ||
-        (taille > 178) ||
-        (poids >= 66 && taille<=157) || 
-        (poids >= 72 && taille <= 160)
-        )
+    bool isEnd = false;
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("--- Saisir les notes ---");
+    Console.WriteLine("(999 pour stoper la saisie)\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    do
     {
-        Console.WriteLine("On a pas votre taille");
-    }
+        Console.Write($"Merci de saisir la note {notes.Count+1} (sur /20) : ");
+        bool isValidNote = int.TryParse(Console.ReadLine(), out int note);
+        if (isValidNote && note >= 0 && note <=20)
+        {
+            notes.Add(note);
+        }
+        else if(isValidNote && note == 999)
+        {
+            Console.Clear();
+            isEnd=true;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\tErreur de saisie, la note est sur 20 !");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+    } while (!isEnd);
 }
-else
+
+static void maxNote(List<int> notes)
 {
-    Console.WriteLine("On a pas votre taille");
-}*/
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("------ La plus grande note ------\n");
+    if (notes.Count > 0)
+    {
+        Console.WriteLine($"La note la plus grande est : {notes.Max()}/20\n");
+    }
+    else
+    {
+        Console.WriteLine($"Il n'y a pas de notes.");
+    }
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.ReadKey();
+    Console.Clear();
+}
+
+static void minNote(List<int> notes)
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("------ La plus petite note ------\n");
+    Console.WriteLine($"La note la plus petite est : {notes.Min()}/20\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.ReadKey();
+    Console.Clear();
+}
+
+static void averageNote(List<int> notes)
+{
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("------ La moyenne des notes ------\n");
+    Console.WriteLine($"La moyenne est de : {notes.Average()} /20\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.ReadKey();
+    Console.Clear();
+}
+
+static void displayMenu()
+{
+    List<int> notes = new List<int>();
+    bool isEnd = false;
+    do
+    {
+        Console.WriteLine("--- Gestion des notes avec menu ---\n");
+        Console.WriteLine("1----Saisir les notes");
+        Console.WriteLine("2----La plus grande note");
+        Console.WriteLine("3----La plus petite note");
+        Console.WriteLine("4----La moyenne des notes");
+        Console.WriteLine("0----Quitter\n");
+        Console.Write("Faites votre choix : ");
+        bool isValidChoice = int.TryParse(Console.ReadLine(), out int choice);
+        if (isValidChoice)
+        {
+            switch (choice)
+            {
+                case 0:
+                    if (isValidChoice)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                case 1:
+                    Console.Clear();
+                    inputNotes(notes);
+                    break;
+                case 2:
+                    Console.Clear();
+                    maxNote(notes);
+                    break;
+                case 3:
+                    Console.Clear();
+                    minNote(notes);
+                    break;
+                case 4:
+                    Console.Clear();
+                    averageNote(notes);
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\tErreur de saisie, faites votre choix !\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+        } else {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\tErreur de saisie, faites votre choix !\n");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+    } while (!isEnd);
+}
+displayMenu();
 #endregion
