@@ -159,35 +159,29 @@ static void App4()
  */
 static void App5()
 {
-    //Renvoye True si la chaîne de caratère possède 1 caratère
-    static bool isLetter(string str)
-    {
-        return str.Length == 1;
-    }
-
     bool isEnd = false;
     while (!isEnd)
     {
-        string lettre = Console.ReadLine().ToUpper();
         string voyelle = "AEIOUY";
         string consonne = "BCDFGHJKLMNPQRSTVWXZ";
 
         Console.WriteLine("--- La lettre est-elle une voyelle ? ---");
         Console.Write("\nEntrez une lettre : ");
+        string lettre = Console.ReadLine().ToUpper();
 
-        if (isLetter(lettre) && voyelle.Contains(lettre))
+        if (lettre.Length == 1 && voyelle.Contains(lettre))
         {
             Console.WriteLine("Cette lettre est une voyelle !\n");
             isEnd = true;
         }
-        else if (isLetter(lettre) && consonne.Contains(lettre))
+        else if (lettre.Length == 1 && consonne.Contains(lettre))
         {
             Console.WriteLine("Cette lettre est une consonne !\n");
             isEnd = true;
         }
         else
         {
-            Console.WriteLine("Votre saisi n'est pas une lettre !\n");
+            Console.WriteLine("\tVotre saisi n'est pas une lettre !\n");
         }
     }
 }
@@ -346,8 +340,7 @@ while(!isEnd)
         Console.WriteLine("Votre saisi de nombre est invalide, on vous comptera pas ce coups !");
         Console.ForegroundColor = ConsoleColor.White;
     }
-}
-*/
+}*/
 #endregion
 
 #region "Exo8"
@@ -502,5 +495,7 @@ static void displayMenu()
 
     } while (!isEnd);
 }
-displayMenu();
+//displayMenu();
 #endregion
+
+
