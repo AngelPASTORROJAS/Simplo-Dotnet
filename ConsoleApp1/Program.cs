@@ -420,29 +420,28 @@ while(!isEnd)
 #endregion
 
 #region "Exo8"
-/** //Moins de 20 lignes 
+//Moins de 20 lignes
 Console.WriteLine("--- Quelle taille dois-je prendre ? ---\n");
-Console.Write("Entrez votre taille (en cm) : ");
-bool isValidTaille = int.TryParse(Console.ReadLine(),out int taille);
-Console.Write("Entrez votre poids (en kg) : ");
-bool isValidPoids= int.TryParse(Console.ReadLine(),out int poids);
 
-if (isValidTaille && isValidPoids && !(
-    (poids < 43 && poids > 77) && (taille < 145 && taille > 183) && 
-    (taille >= 172 && poids < 48) && (taille >= 183 && poids < 54) && 
-    (taille < 160  && poids > 65) && (taille < 163 && poids > 71)
-    )){
-    if (poids <66 && taille <172 && ((poids < 48) || (poids < 54 && taille < 169) || (poids < 60 && taille < 166) || (poids < 66 && taille < 163))){
-        Console.WriteLine("\nPrenez la taille 1.");
-    } else if ( poids < 72 && taille < 183 && ((poids < 54) || (poids < 60 && taille < 178)|| (poids < 66 && taille < 175) || (taille < 169))){
-        Console.WriteLine("\nPrenez la taille 2.");
-    } else {
-        Console.WriteLine("\nPrenez la taille 3.");
-    }
-} else {
+Console.Write("Entrez votre taille (en cm) : ");
+bool isValidTaille = int.TryParse(Console.ReadLine(), out int taille);
+
+Console.Write("Entrez votre poids (en kg) : ");
+bool isValidPoids = int.TryParse(Console.ReadLine(), out int poids);
+
+if (!isValidPoids || !isValidTaille || (taille < 145 && poids < 183) || (taille < 43 && poids < 77) || (taille >= 172 && poids < 48) || (taille >= 183 && poids < 54) || (taille < 160 && poids > 65) || (taille < 163 && poids > 71))
+{
     Console.WriteLine("\nAucune taille ne vous correspond.");
+} else if ((taille < 163 && poids < 66) || (taille < 166 && poids < 60) || (taille < 169 && poids < 54) || (taille < 172 && poids < 48))
+{
+    Console.WriteLine("\nPrenez la taille 1.");
+} else if ((taille < 172 && poids < 72) || (taille < 175 && poids < 66) || (taille < 178 && poids < 60) || (taille < 183 && poids < 54))
+{
+    Console.WriteLine("\nPrenez la taille 2.");
+} else 
+{
+    Console.WriteLine("\nPrenez la taille 3.");
 }
-*/
 #endregion
 
 #region "Exo9"
