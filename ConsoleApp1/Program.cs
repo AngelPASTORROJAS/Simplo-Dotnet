@@ -1,14 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 #region "Exercice1"
-
-
-//int age = 15;
-
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-
 /** Ecrivez un code pour vérifiez si un age on est majeur */
 static void EstMajeur(int age)
 {
@@ -23,10 +15,7 @@ static void EstMajeur(int age)
         Console.WriteLine("Veuillez écrire un age valide");
     }
 }
-
 //EstMajeur(age);
-
-
 #endregion
 
 #region "Exercice2"
