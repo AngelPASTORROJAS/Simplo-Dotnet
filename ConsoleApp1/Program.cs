@@ -260,6 +260,7 @@ for (int i = 1; i < 10 + 1; i++)
 #endregion
 
 #region "Exo4 bis"
+/**
 double tauxAccroissement = 0.89 / 100;
 int nbAnnee = 0;
 double habitants = 96809;
@@ -271,7 +272,7 @@ do
     nbAnnee++;
 } while (habitants < 120000);
 Console.WriteLine($"Il faudra 25 ans, nous serons en {2015 + nbAnnee}");
-Console.WriteLine($"Il y aura {Math.Floor(habitants)} habitants en {2015 + nbAnnee}");
+Console.WriteLine($"Il y aura {Math.Floor(habitants)} habitants en {2015 + nbAnnee}");*/
 #endregion
 
 #region "Exo5"
