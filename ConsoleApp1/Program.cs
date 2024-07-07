@@ -189,35 +189,33 @@ static void App5()
 #endregion
 
 #region "Exo 2"
-//Déclaration des variables c = capital, tdi = taux d'interet, dde = durée d'epargne, mdi = montant des intérêts et cf = capital final du type double
-//Affichage des messages pour entrer les valeurs de capital (en euros), taux d'interet et durée epargne
-//et reception des données : c/tdi/dde rentrée par l'utilisateur
-//Calcul du montant des interets : mi = c * tdi * dde grace à la fonction 
-//Affichage message résultats du montant des interet mdi + affichage de dde
-//Affichage de message du capital final avec utilisation de la variable cf
-//14 instructions
 /**
-bool fin = false;
-double c, tdi, dde, mdi, cf;
-while (!fin)
-{
-    ///if (c is null && tdi is null && dde is null && mdi is null && cf is null)
-    Console.WriteLine("--- Calcul des intérets ---");
-    Console.Write("\nEntrer le capital (en Euros) : ");
-    string str_c = Console.ReadLine();
-    bool existCapital = double.TryParse(str_c, out c);
-    Console.Write("\nEntrer le taux interêt (en %) : ");
-    string str_tdi = Console.ReadLine();
-    bool existTaux_interet = double.TryParse(str_tdi, out tdi);
-    Console.Write("\nEntrer la durée epargne (en Année(s)) : ");
-    string str_dde = Console.ReadLine();
-    bool existEpargne = double.TryParse(str_dde, out dde);
+double capitalDepart, tauxInteret, dureeEpargne, interetAjouteeFinal = 0, capitalFinal = 0;
+Console.WriteLine("--- Calcul des intérets ---\n");
 
-    double mi = c * (tdi / 100) * dde;
-    Console.WriteLine("\nLe montant des intérêts est de " + mi + " euros sur " + dde + " ans.");
-    cf = mi + c;
-    Console.WriteLine("\nVotre somme de capital après " + dde + " ans est de " + cf + " euros.");
-}*/
+Console.Write("Entrer le capital (en Euros) : ");
+string str_c = Console.ReadLine();
+bool existCapital = double.TryParse(str_c, out capitalDepart);
+
+Console.Write("Entrer le taux interêt (en %) : ");
+string str_tdi = Console.ReadLine();
+bool existTaux_interet = double.TryParse(str_tdi, out tauxInteret);
+
+Console.Write("Entrer la durée epargne (en Année(s)) : ");
+string str_dde = Console.ReadLine();
+bool existEpargne = double.TryParse(str_dde, out dureeEpargne);
+
+capitalFinal += capitalDepart;
+for (int i = 0; i < dureeEpargne; i++)
+{
+    double interetAjoutee = capitalFinal * (tauxInteret/100);
+    capitalFinal += interetAjoutee;
+    interetAjouteeFinal += interetAjoutee;
+}
+
+Console.WriteLine($"\nLe montant des intérêts est de {Math.Round(interetAjouteeFinal,2)} euros sur {dureeEpargne} ans.");
+Console.WriteLine($"Le capital final sera de {Math.Round(capitalFinal,2)} euros.");
+*/
 #endregion
 
 #region "Exo4"
@@ -421,6 +419,7 @@ while(!isEnd)
 
 #region "Exo8"
 //Moins de 20 lignes
+/**
 Console.WriteLine("--- Quelle taille dois-je prendre ? ---\n");
 
 Console.Write("Entrez votre taille (en cm) : ");
@@ -441,7 +440,7 @@ if (!isValidPoids || !isValidTaille || (taille < 145 && poids < 183) || (taille 
 } else 
 {
     Console.WriteLine("\nPrenez la taille 3.");
-}
+}*/
 #endregion
 
 #region "Exo9"
