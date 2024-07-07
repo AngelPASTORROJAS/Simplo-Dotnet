@@ -330,6 +330,39 @@ Console.WriteLine($"La moins bonne note est {notes.Min()}/{nbEvaluation}");
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine($"La moyenne des notes est {notes.Average()}/{nbEvaluation}");
 */
+
+/**
+ * List<int> notes = [];
+
+Console.WriteLine("--- Gestion des notes ---\n");
+Console.WriteLine($"Veuillez saisir 5 notes :\n");
+
+for (int i = 1; i < 5+1; i++)
+{
+    Console.Write($"\t- Merci de saisir la note {i} (sur /20) : ");
+    bool existNote = int.TryParse(Console.ReadLine(), out int nbNote);
+    if (existNote && nbNote >= 0 && nbNote <= 20)
+    {
+        notes.Add(nbNote);
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\t\tVotre note n'est pas valide!");
+        Console.ForegroundColor = ConsoleColor.White;
+        i--;
+    }
+}
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine($"La meilleur note est {notes.Max()}/20");
+
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine($"La moins bonne note est {notes.Min()}/20");
+
+Console.ForegroundColor = ConsoleColor.White;
+Console.WriteLine($"La moyenne des notes est {notes.Average()}/20");
+*/
 #endregion
 
 #region "Exo6"
