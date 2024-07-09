@@ -561,3 +561,18 @@ static void displayMenu()
 //displayMenu();
 #endregion
 
+
+string Welcome(string name, int yearsOld, int nbTravel, string[] foods, int yearToNextTravel)
+{
+    string pitch = $"Je suis {name}, j'ai {yearsOld} ans.\n";
+    pitch += $"J'ai voyagé {nbTravel} fois.\n";
+    pitch += "\nMes nourritures favorites sont :\n";
+    foreach (var food in foods)
+    {
+        pitch += "\t- " + food+"\n";
+    }
+    pitch+=$"\nMon prochain voyage sera dans {yearToNextTravel} soit en {Convert.ToInt32(DateTime.Now.Year.ToString())+yearToNextTravel}!\n";
+    return pitch;
+}
+
+Console.Write(Welcome("Angel", 24, 5, ["curry","ceviche","chilcano","aji de gallina","ramen"],1));
